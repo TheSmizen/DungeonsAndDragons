@@ -25,9 +25,6 @@ public class KModel extends Observable {
     public ArrayList<Entity> getShapes() {
         return room.getEntities();
     }
-
-   
-
    
 
     public void reset(){

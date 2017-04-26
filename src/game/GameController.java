@@ -128,6 +128,8 @@ public class GameController {
     
     static void version2(){
         
+        System.out.println("Make sure you run the \"Main\" module in the " +
+                "Graphics folder, not this file!");
         
     }
 
