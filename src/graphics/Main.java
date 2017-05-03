@@ -9,7 +9,7 @@ import java.io.FileNotFoundException;
  * @author p0073862
  */
 public class Main {
-    public static void main(String[] args) throws FileNotFoundException{
+    public static void main() throws FileNotFoundException{
         KModel model = new KModel();
         KView view = new KView(model);
         KController controller = new KController(model, view);

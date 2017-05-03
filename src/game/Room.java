@@ -2,7 +2,6 @@ package game;
 
 /*
  * Class that stores the positions of all the entities
- * Methods to add entities, display the room, display information are not implemented
  */
 
 import java.io.FileNotFoundException;
@@ -337,7 +336,7 @@ public class Room {
 ///Hole O
 
     /**
-     * Method for version 1 that clears the room and creates a new list with the
+     * Method for that clears the room and creates a new list with the
      * entities read in a text or CSV file
      * PRE: filePath exists and is in the correct format.
      * @param filePath Full file path of text or csv file to read.
@@ -401,7 +400,6 @@ public class Room {
     }
     
     /**
-     * Version 2
      * method that saves the entities and their positions into a text or CSV file
      * 
      * @param filePath Full file path of text or csv file to read.

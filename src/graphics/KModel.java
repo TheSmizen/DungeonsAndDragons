@@ -47,13 +47,13 @@ public class KModel extends Observable {
     
     //Modification: room.loadEntities now requires an absolute path parameter
     void load() throws FileNotFoundException {
-        room.loadEntities("C:\\temp\\OutFile.csv");
+        room.loadEntities("C:\\temp\\game.txt");
         sendUpdate();
     }
     
     //Modification: room.saveEntities now requires an absolute path parameter
     void save() throws FileNotFoundException{
-        room.saveEntities("C:\\temp\\OutFile.csv");
+        room.saveEntities("C:\\temp\\game.txt");
         sendUpdate();
     }
 }

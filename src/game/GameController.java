@@ -6,8 +6,9 @@
  */
 
 package game;
+import java.io.FileNotFoundException;
 import java.util.Scanner;
-import java.util.concurrent.TimeUnit;
+import graphics.Main;
 /**
  *
  * @author Arantza
@@ -23,6 +24,8 @@ public class GameController {
 	System.out.println("2: Move animated entities");
         System.out.println("3: Display the properties of an entity");
         System.out.println("4: Reset the room");
+        System.out.println("5: Save the room as it exists.");
+        System.out.println("6: Load a previously saved game.");
         System.out.println("0: Exit");
     }
     
@@ -37,24 +40,11 @@ public class GameController {
         
         //Params:
         //Board width, Stones, Holes, Monsters, FDragons, NDragons, Humans(arr)
-        Room myRoom = new Room(boardWidth, 2, 2, 3, 1, 1, namesString);
+        //If blank, uses default settings
+        Room myRoom = new Room();
 
         System.out.println(myRoom.toString());
-        System.out.println();
-        
-        
-        try{
-            myRoom.loadEntities("C:\\temp\\OutFile.csv");
-            System.out.println("Loading File...\n");
-        }
-        catch(java.io.FileNotFoundException ex){
-                System.out.println(":(\n" + ex.toString());
-        }
-        
-        System.out.println(myRoom.toString());
-        System.out.println();
-
-        
+        System.out.println();        
         
         //Board initialised, now to run main game code:
         
@@ -110,6 +100,26 @@ public class GameController {
                     //Reset the room
                     myRoom.resetRoom(2, 2, 3, 1, 1, namesString);
                     break;
+                    
+                case 5:
+                    try{
+                        myRoom.saveEntities("C:\\temp\\game.txt");
+                    }
+                    catch (FileNotFoundException e) {
+                        System.out.println(e);
+                    }
+                    
+                    break;
+                    
+                case 6:
+                    try{
+                        myRoom.loadEntities("C:\\temp\\game.txt");
+                    }
+                    catch (FileNotFoundException e) {
+                        System.out.println(e);
+                    }
+                    
+                    break;
 
                 case 0:
                     //exit
@@ -126,10 +136,15 @@ public class GameController {
         
     }
     
-    static void version2(){
+    static void version2(){ //GUI version of game.
         
-        System.out.println("Make sure you run the \"Main\" module in the " +
-                "Graphics folder, not this file!");
+        Main gui = new graphics.Main();
+        try{
+            gui.main();
+        }
+        catch(FileNotFoundException e){
+            System.out.println(e);
+        }
         
     }
 
@@ -140,8 +155,19 @@ public class GameController {
     public static void main(String[] args) {
         
         testingMode = false;
+        Scanner inScanner = new Scanner(System.in);
         
-        version2();
+        System.out.println("Please select GUI or Command line.\n"
+                + "Enter 1 for Command line, anything else for GUI");
+        String choice = inScanner.nextLine();
+        
+        if (choice.equals("1")){
+            version1();//Command Line
+        }
+        else{
+            version2();//GUI
+        }
+        
         
     }
     
